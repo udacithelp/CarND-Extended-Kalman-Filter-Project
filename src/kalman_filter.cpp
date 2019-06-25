@@ -64,10 +64,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
   //The angle should be between -pi and pi
   while(phi < -M_PI) {
-    phi = phi + 2 * M_PI;
+    phi = phi + 2.0 * M_PI;
   }
   while(phi > M_PI)  {
-    phi = phi - 2 * M_PI;
+    phi = phi - 2.0 * M_PI;
   }
 
   y(1) = phi;
