@@ -1,5 +1,8 @@
+#define _USE_MATH_DEFINES
+
 #include "FusionEKF.h"
 #include <iostream>
+#include <cmath>
 #include "Eigen/Dense"
 #include "tools.h"
 
