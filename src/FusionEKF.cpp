@@ -38,8 +38,8 @@ FusionEKF::FusionEKF() {
   /**
    * TODO: Finish initializing the FusionEKF.
    */
-  kf_.F_ = MatrixXd(4, 4);
-  kf_.F_ << 1, 0, 1, 0,
+  ekf_.F_ = MatrixXd(4, 4);
+  ekf_.F_ << 1, 0, 1, 0,
             0, 1, 0, 1,
             0, 0, 1, 0,
             0, 0, 0, 1;
