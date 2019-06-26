@@ -99,6 +99,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
               0;
     }
 
+    previous_timestamp_ = measurement_pack.timestamp_;
+
     // done initializing, no need to predict or update
     is_initialized_ = true;
     return;
@@ -118,7 +120,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   float noise_ay = 9;
 
   float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;
-  previous_timestamp_ = measurement_pack.timestamp_;
   //
   float dt_2 = dt * dt;
   float dt_3 = dt_2 * dt;
@@ -134,8 +135,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
          dt_3/2*noise_ax, 0, dt_2*noise_ax, 0,
          0, dt_3/2*noise_ay, 0, dt_2*noise_ay;
   
-  
-
   ekf_.Predict();
 
   /**
